@@ -39,7 +39,6 @@
 
     ];
 
-    var_dump($hotels);
 
 ?>
 
@@ -58,8 +57,39 @@
 
 <body>
 
-    <?php 
-    ?>
+    <!-- table -->
+
+<table class="table table-striped w-75 m-auto mt-5 text-center">
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Descrizione</th>
+      <th scope="col">Parcheggio</th>
+      <th scope="col">Voto</th>
+      <th scope="col">Distanza dal centro in km</th>
+    </tr>
+  </thead>
+  <tbody>
+     <?php foreach($hotels as $hotel) : ?>
+        <tr>
+            <?php foreach($hotel as $key => $value) : ?>
+                <?php if($key === 'parking' && $value) : ?>
+                    <td>
+                        <?php echo "SI" ?>
+                    </td>
+                <?php elseif($key === 'parking' && !$value) : ?>
+                    <td>
+                        <?php echo "NO" ?>
+                    </td>
+                <?php else : ?>
+                    <td>
+                        <?php echo $value ?>
+                    </td>
+                <?php endif ?>
+            <?php endforeach ?>
+         </tr>
+    <?php endforeach ?>
+  </tbody>
 
 </body>
 </html>
